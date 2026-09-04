@@ -1,0 +1,27 @@
+# Black Cheetah - configuracao de performance (Apache / LiteSpeed)
+
+# Compressao: reduz muito o tamanho do HTML na transferencia
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Cache: imagens e icones ficam guardados no navegador do visitante
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp        "access plus 1 year"
+  ExpiresByType image/png         "access plus 1 year"
+  ExpiresByType image/x-icon      "access plus 1 year"
+  ExpiresByType text/css          "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html         "access plus 0 seconds"
+</IfModule>
+
+# Tipo correto para .webp em servidores antigos
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+# Pagina inicial
+DirectoryIndex index.html

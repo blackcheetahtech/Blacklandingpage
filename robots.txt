@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Depois que o dominio estiver no ar, descomente e ajuste:
+# Sitemap: https://SEUDOMINIO.com.br/sitemap.xml
