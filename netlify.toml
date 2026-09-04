@@ -1,0 +1,29 @@
+# Black Cheetah — configuracao do Netlify
+# Site estatico, sem build: o Netlify publica a raiz do repositorio.
+
+[build]
+  publish = "."
+
+# Imagens versionadas: cache longo
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# HTML sempre revalidado, para as alteracoes aparecerem na hora
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
